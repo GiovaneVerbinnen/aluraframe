@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Negociações</title>
+    <!-- <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/bootstrap-theme.css" /> -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .form-group label {
+        font-weight: bold;
+        padding: 10px 0;
+      }
+      .roxo {
+        background-color: darkslateblue;
+      }
+    </style>
+  </head>
+  <body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Negociações de Ações</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarText"
+          aria-controls="navbarText"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+          </ul>
+          <span class="navbar-text">
+            <button class="btn btn-success text-center" type="button">
+              Importar Negociações
+            </button>
+            <button class="btn btn-danger text-center" type="button">
+              Apagar
+            </button>
+          </span>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div class="jumbotron roxo p-4 container-fluid">
+        <div class="row">
+          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2 my-2">
+            <div class="card">
+              <div class="card-body text-dark">
+                <h5 class="card-title">Apple</h5>
+                <p class="card-text lead">
+                  <span class="fw-normal">66,02</span>
+                  <span class="fs-6">BRL</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2 my-2">
+            <div class="card border-primary">
+              <div class="card-body text-dark">
+                <h5 class="card-title">Alphabet BDR</h5>
+                <p class="card-text lead">
+                  <span class="fw-normal">74,17</span>
+                  <span class="fs-6">BRL</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2 my-2">
+            <div class="card border-primary">
+              <div class="card-body text-dark">
+                <h5 class="card-title">Alphabet BDR</h5>
+                <p class="card-text lead">
+                  <span class="fw-normal">74,17</span>
+                  <span class="fs-6">BRL</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2 my-2">
+            <div class="card border-primary">
+              <div class="card-body text-dark">
+                <h5 class="card-title">Alphabet BDR</h5>
+                <p class="card-text lead">
+                  <span class="fw-normal">74,17</span>
+                  <span class="fs-6">BRL</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h1 class="text-center my-4">Negociações de Ações</h1>
+
+      <hr />
+      <div class="container">
+        <div class="d-flex justify-content-center">
+          <form
+            class="form col flex flex-column"
+            onsubmit="negociacaoController.adiciona(event)"
+          >
+            <div class="form-group col-12">
+              <label for="data">Data</label>
+              <input
+                type="date"
+                id="data"
+                class="form-control"
+                required
+                autofocus
+              />
+            </div>
+
+            <div class="form-group col-12">
+              <label for="quantidade">Quantidade</label>
+              <input
+                type="number"
+                min="1"
+                step="1"
+                id="quantidade"
+                class="form-control"
+                value="1"
+                required
+              />
+            </div>
+            <div class="form-group col-12">
+              <label for="valor">Valor</label>
+              <input
+                id="valor"
+                type="number"
+                class="form-control"
+                min="0.01"
+                step="0.01"
+                value="0.0"
+                required
+              />
+            </div>
+
+            <button class="btn btn-primary my-4 btn-lg col-6" type="submit">
+              Incluir
+            </button>
+          </form>
+        </div>
+
+        <table class="table table-hover table-bordered mt-4 bg-white">
+          <thead>
+            <tr>
+              <th>DATA</th>
+              <th>QUANTIDADE</th>
+              <th>VALOR</th>
+              <th>VOLUME</th>
+            </tr>
+          </thead>
+
+          <tbody></tbody>
+
+          <tfoot></tfoot>
+        </table>
+      </div>
+    </main>
+
+    <script src="js/app/models/Negociação.js"></script>
+    <script src="js/app/controllers/NegociacaoController.js"></script>
+    <script src="js/app/helpers/DateHelper.js"></script>
+    <script>
+      let negociacaoController = new NegociacaoController();
+    </script>
+  </body>
+</html>
