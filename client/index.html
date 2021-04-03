@@ -6,16 +6,12 @@
     <!-- <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/bootstrap-theme.css" /> -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
       crossorigin="anonymous"
     />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-      crossorigin="anonymous"
-    ></script>
+
     <style>
       .form-group label {
         font-weight: bold;
@@ -44,22 +40,28 @@
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a
+                class="nav-link active bg-secondary rounded-3"
+                aria-current="page"
+                href="#main"
+                >Home</a
+              >
             </li>
           </ul>
           <span class="navbar-text">
-            <button class="btn btn-success text-center" type="button">
+            <button class="btn btn-success text-center m-1" type="button">
               Importar Negociações
             </button>
-            <button class="btn btn-danger text-center" type="button">
+            <button class="btn btn-danger text-center m-1" type="button">
               Apagar
             </button>
           </span>
         </div>
       </div>
     </nav>
-    <main>
-      <div class="jumbotron roxo p-4 container-fluid">
+    <main id="#main">
+      <!-- Arrumar para funcionar como slider -->
+      <div class="jumbotron roxo p-4 container-fluid" style="display: none">
         <div class="row">
           <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2 my-2">
             <div class="card">
@@ -86,9 +88,9 @@
           <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2 my-2">
             <div class="card border-primary">
               <div class="card-body text-dark">
-                <h5 class="card-title">Alphabet BDR</h5>
+                <h5 class="card-title">BABA34</h5>
                 <p class="card-text lead">
-                  <span class="fw-normal">74,17</span>
+                  <span class="fw-normal">46,20</span>
                   <span class="fs-6">BRL</span>
                 </p>
               </div>
@@ -97,9 +99,31 @@
           <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2 my-2">
             <div class="card border-primary">
               <div class="card-body text-dark">
-                <h5 class="card-title">Alphabet BDR</h5>
+                <h5 class="card-title">WEGE3</h5>
                 <p class="card-text lead">
-                  <span class="fw-normal">74,17</span>
+                  <span class="fw-normal">75,17</span>
+                  <span class="fs-6">BRL</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2 my-2">
+            <div class="card border-primary">
+              <div class="card-body text-dark">
+                <h5 class="card-title">TSLA34</h5>
+                <p class="card-text lead">
+                  <span class="fw-normal">118,00</span>
+                  <span class="fs-6">BRL</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4 col-xl-2 my-2">
+            <div class="card border-primary">
+              <div class="card-body text-dark">
+                <h5 class="card-title">AMZO34</h5>
+                <p class="card-text lead">
+                  <span class="fw-normal">115,00</span>
                   <span class="fs-6">BRL</span>
                 </p>
               </div>
@@ -111,74 +135,73 @@
       <h1 class="text-center my-4">Negociações de Ações</h1>
 
       <hr />
-      <div class="container">
-        <div class="d-flex justify-content-center">
-          <form
-            class="form col flex flex-column"
-            onsubmit="negociacaoController.adiciona(event)"
-          >
-            <div class="form-group col-12">
-              <label for="data">Data</label>
-              <input
-                type="date"
-                id="data"
-                class="form-control"
-                required
-                autofocus
-              />
-            </div>
 
-            <div class="form-group col-12">
-              <label for="quantidade">Quantidade</label>
-              <input
-                type="number"
-                min="1"
-                step="1"
-                id="quantidade"
-                class="form-control"
-                value="1"
-                required
-              />
-            </div>
-            <div class="form-group col-12">
-              <label for="valor">Valor</label>
-              <input
-                id="valor"
-                type="number"
-                class="form-control"
-                min="0.01"
-                step="0.01"
-                value="0.0"
-                required
-              />
-            </div>
+      <div class="container" style="max-width: 600px">
+        <div id="mensagemView"></div>
+        <form
+          class="form row justify-content-center"
+          onsubmit="negociacaoController.adiciona(event)"
+        >
+          <div class="form-group col-12">
+            <label for="data">Data</label>
+            <input
+              type="date"
+              id="data"
+              class="form-control"
+              required
+              autofocus
+            />
+          </div>
 
-            <button class="btn btn-primary my-4 btn-lg col-6" type="submit">
-              Incluir
-            </button>
-          </form>
-        </div>
+          <div class="form-group col-12">
+            <label for="quantidade">Quantidade</label>
+            <input
+              type="number"
+              min="1"
+              step="1"
+              id="quantidade"
+              class="form-control"
+              value="1"
+              required
+            />
+          </div>
+          <div class="form-group col-12">
+            <label for="valor">Valor</label>
+            <input
+              id="valor"
+              type="number"
+              class="form-control"
+              min="0.01"
+              step="0.01"
+              value="0.0"
+              required
+            />
+          </div>
 
-        <table class="table table-hover table-bordered mt-4 bg-white">
-          <thead>
-            <tr>
-              <th>DATA</th>
-              <th>QUANTIDADE</th>
-              <th>VALOR</th>
-              <th>VOLUME</th>
-            </tr>
-          </thead>
-
-          <tbody></tbody>
-
-          <tfoot></tfoot>
-        </table>
+          <button class="btn btn-primary my-4 btn-lg col-6" type="submit">
+            Incluir
+          </button>
+        </form>
       </div>
+      <div class="container" id="negociacoesView"></div>
     </main>
+    <footer class="jumbotron roxo p-4 container-fluid">
+      <p class="text-center text-white">Desenvolvido por Giovane Verbinnen</p>
+    </footer>
 
     <script src="js/app/models/Negociação.js"></script>
+    <script src="js/app/models/ListaNegociacoes.js"></script>
+    <script src="js/app/models/Mensagem.js"></script>
+
     <script src="js/app/controllers/NegociacaoController.js"></script>
+
     <script src="js/app/helpers/DateHelper.js"></script>
+
+    <script src="js/app/views/View.js"></script>
+
+    <script src="js/app/views/NegociacoesView.js"></script>
+    <script src="js/app/views/MensagemView.js"></script>
+
     <script>
       let negociacaoController = new NegociacaoController();
     </script>
